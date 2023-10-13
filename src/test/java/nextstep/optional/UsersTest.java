@@ -16,6 +16,6 @@ public class UsersTest {
     @Test
     public void getDefaultUser() {
         Users users = new Users();
-        assertThat(users.getUser("codesquard")).isEqualTo(Users.DEFAULT_USER);
+        assertThat(users.getUserOptional("codesquard")).isEqualTo(Users.DEFAULT_USER);
     }
 }

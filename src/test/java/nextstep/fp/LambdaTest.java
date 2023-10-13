@@ -9,6 +9,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class LambdaTest {
+
     private List<Integer> numbers;
 
     @BeforeEach
@@ -33,8 +34,8 @@ public class LambdaTest {
 
     @Test
     public void sumAll() throws Exception {
-        int sum = Lambda.sumAll(numbers);
-        assertThat(sum).isEqualTo(21);
+//        int sum = Lambda.sumAll(numbers);
+//        assertThat(sum).isEqualTo(21);
     }
 
     @Test
@@ -47,5 +48,50 @@ public class LambdaTest {
     public void sumAllOverThree() throws Exception {
         int sum = Lambda.sumAllOverThree(numbers);
         assertThat(sum).isEqualTo(15);
+    }
+
+    @Test
+    void sumAllTest() {
+        Conditional c = new Conditional() {
+            @Override
+            public boolean test(Integer number) {
+                return number % 2 == 0;
+            }
+        };
+        int sum = Lambda.sumAll(numbers, c);
+        assertThat(sum).isEqualTo(12);
+
+        c = new Conditional() {
+            @Override
+            public boolean test(Integer number) {
+                return number > 3;
+            }
+        };
+        sum = Lambda.sumAll(numbers, c);
+        assertThat(sum).isEqualTo(15);
+        c = new Conditional() {
+            @Override
+            public boolean test(Integer number) {
+                return true;
+            }
+        };
+        sum = Lambda.sumAll(numbers, c);
+        assertThat(sum).isEqualTo(21);
+    }
+
+
+    @Test
+    void sumAllTest2() {
+        Conditional c = number -> number % 2 == 0;
+        int sum = Lambda.sumAll(numbers, c);
+        assertThat(sum).isEqualTo(12);
+
+        c = number -> number > 3;
+        sum = Lambda.sumAll(numbers, c);
+        assertThat(sum).isEqualTo(15);
+
+        c = number -> true;
+        sum = Lambda.sumAll(numbers, c);
+        assertThat(sum).isEqualTo(21);
     }
 }

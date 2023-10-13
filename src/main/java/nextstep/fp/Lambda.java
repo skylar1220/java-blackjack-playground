@@ -3,6 +3,7 @@ package nextstep.fp;
 import java.util.List;
 
 public class Lambda {
+
     public static void printAllOld(List<Integer> numbers) {
         System.out.println("printAllOld");
 
@@ -26,13 +27,13 @@ public class Lambda {
         }).start();
     }
 
-    public static int sumAll(List<Integer> numbers) {
-        int total = 0;
-        for (int number : numbers) {
-            total += number;
-        }
-        return total;
-    }
+//    public static int sumAll(List<Integer> numbers) {
+//        int total = 0;
+//        for (int number : numbers) {
+//            total += number;
+//        }
+//        return total;
+//    }
 
     public static int sumAllEven(List<Integer> numbers) {
         int total = 0;
@@ -53,4 +54,17 @@ public class Lambda {
         }
         return total;
     }
+
+
+    public static int sumAll(List<Integer> numbers, Conditional c) {
+        int total = 0;
+        for (int number : numbers) {
+            if (c.test(number)) {
+                total += number;
+            }
+        }
+        return total;
+    }
+
+
 }

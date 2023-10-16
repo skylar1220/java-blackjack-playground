@@ -17,4 +17,8 @@ public class PlayerInfoDto {
     public String getPlayerName() {
         return playerName;
     }
+
+    public Player toPlayer() {
+        return Player.from(playerName, bettingMoney);
+    }
 }

@@ -1,6 +1,71 @@
+# 클래스별 구현 목록
+- InputView
+  - [x] 플레이어 이름받아서 Dto로 
+    - [x] 이름 형식 검증 
+      - form : 특수문자나 숫자가 없는 한글,영어,콤마로만 이뤄져있는지
+      - blank : 공백 아닌지
+
+- PlayerNamesDto
+  - List<String> playerNames
+
+- Player
+  - filed: PlayerName, BettinMoney
+  - [ ] (예외) 길이 : 10자 이하인지
+  - 
+
+- RandomCardGenerator
+  - [ ] randomPick으로 rank, suit 구해서 카드 반환하는 메소드
+
+- Card
+  - field: Rank, Suit
+
+- Cards
+  - field: List <Card> cardList
+  - (나중에 openedCards 이름으로 나온 카드 관리-> random때 filter로 쓰기위해)
+  - [ ] add 메소드
+
+- 랜덤 카드 뽑고 세팅 구현 과정
+- 시작: 컨트롤러 randomGenerator 들고 
+- 
+
+- BalckJackGame
+  - field: GameStatus, ?
+
+- GameStatus
+  - field: booelan isEnd
+  - PLAYING, END
+
+- BlackjackController
+  - [x] 이름 받고, 이름별 금액 받는 메소드
+
+- Players
+
+
+- Dealer
+
+
+- PlayerName
+
+
+- BettingMoney
+
+
+
+
+- PlayerInfoDto
+
+
+- (e) HitOrStand
+  - HIT, STAND
+
+- (e) Rank
+
+- (e) Suit
+
 # 구현할 기능 목록
-- [ ] 플레이어 이름 입력받기
-- [ ] 플레이어별 배팅 금액 입력받기
+- [x] 플레이어 이름 입력받기
+- [x] 플레이어별 배팅 금액 입력받기
+- [ ] 플레이어 세팅
 - [ ] 딜러 + 플레이어 별 2장씩 랜덤 카드 세팅받음
 - [ ] 카드 세팅 결과 출력
 - (처음 블랙잭 검증)
@@ -30,3 +95,23 @@
   - 2~9
   - k,1,j: 10
   - ace: 1 /11
+
+
+# 프로그래밍 요구 사항
+- indent(인덴트, 들여쓰기) depth를 2를 넘지 않도록 구현한다. 1까지만 허용한다.
+- 함수(또는 메서드)의 길이가 10라인을 넘어가지 않도록 구현한다.
+- 배열 대신 컬렉션을 사용한다.
+- 모든 원시 값과 문자열을 포장한다
+- 일급 컬렉션을 쓴다.
+- 3개 이상의 인스턴스 변수를 가진 클래스를 쓰지 않는다.
+- 딜러와 플레이어에서 발생하는 중복 코드를 제거해야 한다.
+
+
+### TDD 원칙 ⭐️⭐️
+- 원칙 1 - 실패하는 단위 테스트를 작성할 때까지 프로덕션 코드(production code)를 작성하지 않는다.
+- 원칙 2 - 컴파일은 실패하지 않으면서 실행이 실패하는 정도로만 단위 테스트를 작성한다.
+- 원칙 3 - 현재 실패하는 테스트를 통과할 정도로만 실제 코드를 작성한다.
+### TDD 사이클 ⭐️⭐️
+1. 실패하는 테스트를 구현한다.
+2. 테스트가 성공하도록 프로덕션 코드를 구현한다.
+3. 프로덕션 코드와 테스트 코드를 리팩토링한다.

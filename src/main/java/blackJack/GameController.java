@@ -11,9 +11,14 @@ public class GameController {
 
     public void start() {
         InputView.scanPlayerNames();
+        Players players = read(this::generatePlayers);
+
+    }
+
+    private Players generatePlayers() {
         PlayerNamesDto playerNamesDto = read(InputView::scanPlayerNames);
         List<PlayerInfoDto> playerInfoDtos = inputView.scanBettingMoneys(playerNamesDto.getPlayerNames());
-        Players players = playerInfoDtos.stream()
+        return playerInfoDtos.stream()
             .map(PlayerInfoDto::toPlayer)
             .collect(collectingAndThen(toList(), Players::from));
     }

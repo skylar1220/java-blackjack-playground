@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class RandomCardTest {
 
     @Test
-    void randomCardGeneratorTest() {
+    void cardGeneratorTest() {
         NumberGenerator numberGenerator = new NumberGenerator() {
             @Override
             public int generateSuitIndex() {
@@ -20,7 +20,18 @@ public class RandomCardTest {
             }
         };
         RandomCardGenerator randomCardGenerator = new RandomCardGenerator();
-        assertThat(randomCardGenerator.generate(numberGenerator)).isEqualTo(new Card(Suit.CLOVER, null));
+        assertThat(randomCardGenerator.generate(numberGenerator)).isEqualTo(
+            new Card(Suit.CLOVER, Rank.A));
+    }
 
+    @Test
+    void randomTest() {
+        RandomCardGenerator randomCardGenerator = new RandomCardGenerator();
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+        System.out.println(randomCardGenerator.generate(randomNumberGenerator));
+        System.out.println(randomCardGenerator.generate(randomNumberGenerator));
+        System.out.println(randomCardGenerator.generate(randomNumberGenerator));
+        System.out.println(randomCardGenerator.generate(randomNumberGenerator));
+        System.out.println(randomCardGenerator.generate(randomNumberGenerator));
     }
 }

@@ -3,19 +3,32 @@ package blackJack;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 public class RandomCardGenerator implements CardGenerator {
 
-    List<Card> openedCars = new ArrayList<>();
+    List<Card> openedCards = new ArrayList<>();
 
     @Override
     public Card generate(NumberGenerator randomNumberGenerator) {
-//        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+        Suit suit = getRandomSuit(randomNumberGenerator);
+        Rank rank = getRandomRank(randomNumberGenerator);
+        Card card = null; // default?
+        do {
+            card = new Card(suit, rank);
+        } while (openedCards.contains(card));
+        openedCards.add(card);
+        return card;
+    }
+
+    private Rank getRandomRank(NumberGenerator randomNumberGenerator) {
+        int rankIndex = randomNumberGenerator.generateRankIndex();
+        List<Rank> ranks = Arrays.asList(Rank.values());
+        return ranks.get(rankIndex);
+    }
+
+    private Suit getRandomSuit(NumberGenerator randomNumberGenerator) {
         int suitIndex = randomNumberGenerator.generateSuitIndex();
         List<Suit> suits = Arrays.asList(Suit.values());
-        Suit suit = suits.get(suitIndex);
-        Rank rank = null;
-        return new Card(suit, rank);
+        return suits.get(suitIndex);
     }
 }

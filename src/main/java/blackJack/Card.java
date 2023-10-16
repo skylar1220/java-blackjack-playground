@@ -28,4 +28,9 @@ public class Card {
     public int hashCode() {
         return Objects.hash(suit, rank);
     }
+
+    @Override
+    public String toString() {
+        return  suit + "-" + rank;
+    }
 }

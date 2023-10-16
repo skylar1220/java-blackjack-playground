@@ -5,12 +5,13 @@ import java.util.Random;
 public class RandomNumberGenerator implements NumberGenerator {
 
     public int generateSuitIndex() {
-        Random random = new Random(3);
-        return random.nextInt();
+        Random random = new Random();
+        return random.nextInt(4);
     }
 
     @Override
     public int generateRankIndex() {
-        return 0;
+        Random random = new Random();
+        return random.nextInt(12);
     }
 }

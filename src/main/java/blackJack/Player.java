@@ -5,7 +5,7 @@ public class Player {
     private final PlayerName playName;
     private final BettingMoney bettingMoney;
 
-    public Player(PlayerName playerName, BettingMoney bettingMoney) {
+    private Player(PlayerName playerName, BettingMoney bettingMoney) {
         this.playName = playerName;
         this.bettingMoney = bettingMoney;
     }

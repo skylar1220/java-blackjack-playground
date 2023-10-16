@@ -10,7 +10,6 @@
 
 - Player
   - filed: PlayerName, BettinMoney
-  - [ ] (예외) 길이 : 10자 이하인지
   - 
 
 - RandomCardGenerator
@@ -45,9 +44,11 @@
 
 
 - PlayerName
+  - [ ] (예외) 길이 : 10자 이하인지
 
 
 - BettingMoney
+  - [ ] (예외) 금액 0보다 큰지
 
 
 
@@ -59,14 +60,19 @@
   - HIT, STAND
 
 - (e) Rank
+- 
 
 - (e) Suit
+  -CLOVER, SPADE, HEART, DIA
 
 # 구현할 기능 목록
 - [x] 플레이어 이름 입력받기
 - [x] 플레이어별 배팅 금액 입력받기
 - [x] 플레이어 세팅
 - [ ] 딜러 + 플레이어 별 2장씩 랜덤 카드 세팅받음
+  - //랜덤 카드 세팅 어떻게? 일단 CardGenerator 인터페이스 구현한 RandomCardGenerator 클래스에서 generate
+  - //Gmae or GameStatus에 openedCards 가 있어서 거기서 그걸 들고 갖고온 cardGenerator도 갖고 들어가서 받은 걸
+  - //Card로 받아서 그걸 Game 또는 GameStatus에서 플레이어별로 갖은 걸 출력해야할 것 같은데.
 - [ ] 카드 세팅 결과 출력
 - (처음 블랙잭 검증)
 - [ ] 플레이어, 딜러 21인지 검증

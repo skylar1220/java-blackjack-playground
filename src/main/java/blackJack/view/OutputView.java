@@ -59,7 +59,11 @@ public class OutputView {
         }
     }
 
-    public static void printPlayerCards(PlayersWithCard playersWithCard) {
+    public static void printPlayerCards(PlayerWithCard playerWithCard) {
+        String playerName = playerWithCard.getPlayer().getPlayerName().getName();
+        String playerCards = String.join(", ", playerWithCard.getCards().getCardsName());
+        System.out.printf("%s카드: %s", playerName, playerCards);
+        System.out.println();
     }
 }
 

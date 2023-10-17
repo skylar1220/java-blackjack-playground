@@ -42,22 +42,27 @@ public class GameController {
             OutputView.printFinalBenefit(playersWithCard, dealerWithCard);
         }
 
-        playersWithCard.getPlayersWithCard().forEach(playerWithCard -> {
+        for (PlayerWithCard playerWithCard : playersWithCard.getPlayersWithCard()) {
             ExtraCard extraCard = null;
             do {
                 extraCard = InputView.scanExtraCard(playerWithCard);
-                if (extraCard == ExtraCard.YES){
+                if (extraCard == ExtraCard.YES) {
                     playerWithCard.extraCard(cardGenerator);
                 }
+                if (extraCard == ExtraCard.NO) {
+                    OutputView.printPlayerCards(playerWithCard);
+                }
+                if (playerWithCard.isGameOver()) {
+                    OutputView.printPlayerCards(playerWithCard);
+                    break; // 루프를 빠져나옴
+                }
             } while (extraCard == ExtraCard.YES);
-//            OutputView.printPlayerCards(playersWithCard);
-//            playersWithCard.checkGameOver();
-        });
-// extraCard가 N가 될 때까지 read를 하고 싶은데
-//       ㅇ read 안에서는 scan하고 playersWithCard에 randomCard 1장 추가하는 게 일어나야함
-//        N가 돼서 read 빠져나오면 printCards 하고
-//        gameOver 체크
+        }
 
+        // 딜러 차례
+
+        OutputView.printResult(playersWithCard);
+        OutputView.printBenefit(playersWithCard);
 
     }
 

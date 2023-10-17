@@ -38,4 +38,8 @@ public class PlayerWithCard {
         Card card = cardGenerator.generate();
         cards.add(card);
     }
+
+    public boolean isGameOver() {
+        return cards.isGameOver();
+    }
 }

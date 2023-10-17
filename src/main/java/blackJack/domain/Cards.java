@@ -28,10 +28,19 @@ public class Cards {
     }
 
     public boolean isBlackJack() {
-        int cardSum = cards.stream()
+        int cardSum = getCardsSum(cards);
+        return cardSum == 11;
+    }
+
+    public boolean isGameOver() {
+        int cardSum = getCardsSum(cards);
+        return cardSum >= 21;
+    }
+
+    private static int getCardsSum(List<Card> cards) {
+        return cards.stream()
             .map(card -> card.getRank().getNumber())
             .reduce(0, Integer::sum);
-        return cardSum == 11;
     }
 
 //    public void setBlackJack() {

@@ -42,6 +42,7 @@ public class GameController {
             OutputView.printFinalBenefit(playersWithCard, dealerWithCard);
         }
 
+        // 여기 정리 필요
         for (PlayerWithCard playerWithCard : playersWithCard.getPlayersWithCard()) {
             ExtraCard extraCard = null;
             do {
@@ -60,9 +61,17 @@ public class GameController {
         }
 
         // 딜러 차례
+        // 16이하일 때와 gameOver일 때까지 extra 카드 받기 / 플레이어 중 gameOver가 아니면
+        while (dealerWithCard.needExtraCard() || !dealerWithCard.isGameOver() || !playersWithCard.isGameOver()) {
+            dealerWithCard.extraCard(cardGenerator);
+            OutputView.printDealerExtraCard();
+        }
+
+        playersWithCard.calculateEarning(dealerWithCard);
 
         OutputView.printResult(playersWithCard);
         OutputView.printBenefit(playersWithCard);
+
 
     }
 
@@ -75,6 +84,7 @@ public class GameController {
         PlayerNamesDto playerNamesDto = read(InputView::scanPlayerNames);
         List<PlayerInfoDto> playerInfoDtos = inputView.scanBettingMoneys(
             playerNamesDto.getPlayerNames());
+
         return playerInfoDtos.stream()
             .map(PlayerInfoDto::toPlayer)
             .collect(collectingAndThen(toList(), Players::from));

@@ -73,3 +73,10 @@ jason: -20000
 3. 프로덕션 코드와 테스트 코드를 리팩토링한다.
 
 
+### 기타
+    /*
+    - 블랙잭 검증하기
+--plyaerㄴWithCard 돌면서 isBlackJack이 트루인 PlayerWithCard만 필터해서
+- PlyaerWithCard.player.winBlackJack(bettingmoney +1.5배 시켜줌)
+  .count
+  */

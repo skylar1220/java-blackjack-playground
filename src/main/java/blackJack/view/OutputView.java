@@ -28,7 +28,6 @@ public class OutputView {
                 System.out.printf("%s카드: %s", playerName, playerCards);
                 System.out.println();
             }
-
         );
     }
 
@@ -64,6 +63,33 @@ public class OutputView {
         String playerCards = String.join(", ", playerWithCard.getCards().getCardsName());
         System.out.printf("%s카드: %s", playerName, playerCards);
         System.out.println();
+    }
+
+    public static void printDealerExtraCard() {
+        System.out.println("딜러는 16이하라 한장의 카드를 더 받았습니다.");
+    }
+
+    public static void printResult(PlayersWithCard playersWithCard) {
+
+        playersWithCard.getPlayersWithCard().forEach(playerWithCard -> {
+                String playerName = playerWithCard.getPlayer().getPlayerName().getName();
+                String playerCards = String.join(", ", playerWithCard.getCards().getCardsName());
+                int cardRankSum = playerWithCard.getCards().getCardsSum();
+                System.out.printf("%s카드: %s - 결과: %d", playerName, playerCards, cardRankSum);
+                System.out.println();
+            }
+        );
+    }
+
+    public static void printBenefit(PlayersWithCard playersWithCard) {
+        System.out.println("## 최종 수익");
+        playersWithCard.getPlayersWithCard().forEach(playerWithCard -> {
+                String playerName = playerWithCard.getPlayer().getPlayerName().getName();
+
+                System.out.printf("%s: %d", playerName, earning);
+                System.out.println();
+            }
+        );
     }
 }
 

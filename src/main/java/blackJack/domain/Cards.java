@@ -23,27 +23,31 @@ public class Cards {
 
     public List<String> getCardsName() {
         return cards.stream()
-            .map(card -> card.getCard())
+            .map(Card::getCard)
             .collect(Collectors.toList());
     }
 
     public boolean isBlackJack() {
-        int cardSum = getCardsSum(cards);
+        int cardSum = getCardsSum();
         return cardSum == 11;
     }
 
     public boolean isGameOver() {
-        int cardSum = getCardsSum(cards);
+        int cardSum = getCardsSum();
         return cardSum >= 21;
     }
 
-    private static int getCardsSum(List<Card> cards) {
+    public int getCardsSum() {
         return cards.stream()
             .map(card -> card.getRank().getNumber())
             .reduce(0, Integer::sum);
     }
 
-//    public void setBlackJack() {
-//        this.status = Status.BLACKJACK;
-//    }
+    public boolean needExtraCard() {
+        int cardSum = getCardsSum();
+        return cardSum <= 16;
+    }
+
+    // a인 경우, 근데 나머지가 ? 이상일 때는 1로, 이하일 때는 11ㅇ로 계산하는 부분 sum 메소드들에 넣어야 할듯
+
 }

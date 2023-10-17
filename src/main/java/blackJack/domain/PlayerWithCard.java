@@ -42,4 +42,8 @@ public class PlayerWithCard {
     public boolean isGameOver() {
         return cards.isGameOver();
     }
+
+    public boolean needExtraCard() {
+        return cards.needExtraCard();
+    }
 }

@@ -1,25 +1,27 @@
 package blackJack;
 
-import static blackJack.util.RetyrUtil.read;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
 
 import blackJack.domain.BettingMoney;
+import blackJack.domain.Card;
 import blackJack.domain.CardGenerator;
 import blackJack.domain.Player;
 import blackJack.domain.PlayerWithCard;
 import blackJack.domain.Players;
 import blackJack.domain.PlayersWithCard;
 import blackJack.domain.RandomCardGenerator;
+import blackJack.domain.Rank;
+import blackJack.domain.Suit;
 import blackJack.view.OutputView;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.time.Duration;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-public class PlayerWithCardTest extends NsTest {
+public class isBlackJackTest extends NsTest {
     private static final Duration RANDOM_TEST_TIMEOUT = Duration.ofSeconds(10L);
-    CardGenerator cardGenerator = new RandomCardGenerator();
+//    CardGenerator cardGenerator = new RandomCardGenerator();
 
     @Nested
     class AllFeatureTest {
@@ -28,7 +30,7 @@ public class PlayerWithCardTest extends NsTest {
             assertTimeoutPreemptively(RANDOM_TEST_TIMEOUT, () -> {
                 runMain();
                 assertThat(output()).contains(
-                    "딜러", "가나", "다라", "스페이드", "일부러"
+                    "BLACKJACK", "일부러"
                 );
             });
         }
@@ -41,7 +43,15 @@ public class PlayerWithCardTest extends NsTest {
         Player dealer = Player.from("딜러", BettingMoney.from(200));
         CardGenerator cardGenerator = new RandomCardGenerator();
         PlayersWithCard playersWithCard = players.firstCardSetting(cardGenerator);
+
+        Player tester = Player.from("tester", BettingMoney.from(200));
+        Card card1 = Card.fromTest(Suit.DIA, Rank.A);
+        Card card2 = Card.fromTest(Suit.DIA, Rank.Q);
+        PlayerWithCard blackPlayerWithCard = tester.playerCardFirstSettingTest(card1,card2);
+
         PlayerWithCard dealerWithCard = dealer.playerCardFirstSetting(cardGenerator);
-        OutputView.printFirstSetting(playersWithCard, dealerWithCard);
+
+        playersWithCard.add(blackPlayerWithCard);
+        playersWithCard.checkBalckJack();
     }
 }

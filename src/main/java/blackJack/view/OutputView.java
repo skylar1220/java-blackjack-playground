@@ -20,7 +20,7 @@ public class OutputView {
         String playersName = String.join(", ", nameList);
         System.out.printf("딜러와 %s에게 2장의 나누었습니다.", playersName);
         System.out.println();
-        
+
         playersWithCard.addDealer(dealerWithCard);
         playersWithCard.getPlayersWithCard().forEach(playerWithCard -> {
                 String playerName = playerWithCard.getPlayer().getPlayerName().getName();
@@ -30,12 +30,5 @@ public class OutputView {
             }
 
         );
-
-        /*
-        o 딜러와 pobi, jason에게 2장의 나누었습니다.
-        딜러: 3다이아몬드 9클로버
-        pobi카드: 2하트, 8스페이드
-        jason카드: 7클로버, K스페이드
-         */
     }
 }

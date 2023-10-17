@@ -12,6 +12,10 @@ public class Card {
         this.rank = rank;
     }
 
+    public static Card fromTest(Suit suit, Rank rank) {
+        return new Card(suit,rank);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -31,5 +35,9 @@ public class Card {
 
     public String getCard() {
         return rank.getNumber() + suit.getForm() ;
+    }
+
+    public Rank getRank() {
+        return rank;
     }
 }

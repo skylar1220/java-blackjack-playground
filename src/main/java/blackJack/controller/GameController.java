@@ -34,13 +34,8 @@ public class GameController {
         PlayersWithCard playersWithCard = players.firstCardSetting(cardGenerator);
         PlayerWithCard dealerWithCard = dealer.playerCardFirstSetting(cardGenerator);
         OutputView.printFirstSetting(playersWithCard, dealerWithCard);
-//        playersWithCard.checkBalckJack();
+        playersWithCard.checkBalckJack();
 /*
-- 딜러 객체 만들기
-기능: 똑같이 이름 객체 필드로 주고 dealer로 불러올지 / 아님 그 필드 없이 할지
-
-- 딜러 객체로 프린트 수정하기
-
 - 블랙잭 검증하기
 
 -
@@ -48,8 +43,6 @@ public class GameController {
 
     }
 
-    private void firstCardSetting(Players players, RandomCardGenerator randomCardGenerator) {
-    }
 
     private Players generatePlayers() {
         PlayerNamesDto playerNamesDto = read(InputView::scanPlayerNames);

@@ -30,4 +30,11 @@ public class Player {
     public static Player fromTest(String playerName, int bettingMoney) {
         return new Player(new PlayerName(playerName), BettingMoney.from(bettingMoney));
     }
+
+    public PlayerWithCard playerCardFirstSettingTest(Card card1, Card card2) {
+        PlayerWithCard playerWithCard = PlayerWithCard.from(this);
+        playerWithCard.add(card1);
+        playerWithCard.add(card2);
+        return playerWithCard;
+    }
 }

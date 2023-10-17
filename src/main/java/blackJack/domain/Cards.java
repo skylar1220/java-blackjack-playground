@@ -25,4 +25,11 @@ public class Cards {
             .map(card -> card.getCard())
             .collect(Collectors.toList());
     }
+
+    public boolean isBlackJack() {
+        int cardSum = cards.stream()
+            .map(card -> card.getRank().getNumber())
+            .reduce(0, Integer::sum);
+        return cardSum == 11;
+    }
 }

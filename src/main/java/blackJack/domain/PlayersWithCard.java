@@ -22,4 +22,8 @@ public class PlayersWithCard {
     public void addDealer(PlayerWithCard dealerWithCard) {
         playersWithCard.add(0, dealerWithCard);
     }
+
+    public void checkBalckJack() {
+        playersWithCard.forEach(PlayerWithCard::checkBlackJack);
+    }
 }

@@ -34,4 +34,8 @@ public class PlayerWithCard {
         player.winBlackJack();
     }
 
+    public void extraCard(CardGenerator cardGenerator) {
+        Card card = cardGenerator.generate();
+        cards.add(card);
+    }
 }

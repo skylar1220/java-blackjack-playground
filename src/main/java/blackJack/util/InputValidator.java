@@ -34,4 +34,14 @@ public class InputValidator {
     private static boolean isInteger(String rawBetiingMoeny) {
         return rawBetiingMoeny.matches(INTEGER_FORMAT);
     }
+
+    public static void validateExtraCard(String rawExtraCard) {
+        if (!isYorN(rawExtraCard)) {
+            throw new IllegalArgumentException(FORMAT_EXCEPTION_MESSAGE);
+        }
+    }
+
+    private static boolean isYorN(String rawExtraCard) {
+        return rawExtraCard.equals("y") || rawExtraCard.equals("n");
+    }
 }

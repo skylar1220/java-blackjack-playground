@@ -18,4 +18,8 @@ public class PlayersWithCard {
     public List<PlayerWithCard> getPlayersWithCard() {
         return playersWithCard;
     }
+
+    public void addDealer(PlayerWithCard dealerWithCard) {
+        playersWithCard.add(0, dealerWithCard);
+    }
 }

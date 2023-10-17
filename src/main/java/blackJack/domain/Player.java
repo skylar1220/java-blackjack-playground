@@ -16,10 +16,10 @@ public class Player {
 
     public PlayerWithCard playerCardFirstSetting(CardGenerator cardGenerator) {
         PlayerWithCard playerWithCard = PlayerWithCard.from(this);
-        Card card1 = cardGenerator.generate();
-        Card card2 = cardGenerator.generate();
-        playerWithCard.add(card1);
-        playerWithCard.add(card2);
+        for (int i = 0; i < 2; i++) {
+            Card card = cardGenerator.generate();
+            playerWithCard.add(card);
+        }
         return playerWithCard;
     }
 

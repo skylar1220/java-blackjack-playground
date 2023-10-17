@@ -52,6 +52,6 @@ public class isBlackJackTest extends NsTest {
         PlayerWithCard dealerWithCard = dealer.playerCardFirstSetting(cardGenerator);
 
         playersWithCard.add(blackPlayerWithCard);
-        playersWithCard.checkBalckJack();
+//        playersWithCard.checkBalckJack();
     }
 }

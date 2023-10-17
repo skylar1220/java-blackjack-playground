@@ -4,7 +4,6 @@ public class PlayerWithCard {
 
     private final Player player;
     private final Cards cards;
-    private Status status;
 
     public PlayerWithCard(Player player) {
         this.player = player;
@@ -27,10 +26,12 @@ public class PlayerWithCard {
         return player;
     }
 
-    public void checkBlackJack() {
-        if (cards.isBlackJack()) {
-            status = Status.BLACKJACK;
-            System.out.println(player.getPlayerName().getName() + status.name());
-        }
+    public boolean isBlackJack() {
+        return cards.isBlackJack();
     }
+
+    public void winBlackJack() {
+        player.winBlackJack();
+    }
+
 }

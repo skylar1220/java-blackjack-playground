@@ -23,7 +23,25 @@ public class PlayersWithCard {
         playersWithCard.add(0, dealerWithCard);
     }
 
-    public void checkBalckJack() {
-        playersWithCard.forEach(PlayerWithCard::checkBlackJack);
+    public int getPlayerBlackJackCount() {
+        winBlackJack(playersWithCard);
+        return (int) playersWithCard.stream()
+            .filter(PlayerWithCard::isBlackJack)
+            .count();
     }
+
+    private static void winBlackJack(List<PlayerWithCard> playersWithCard) {
+        playersWithCard.stream()
+            .filter(PlayerWithCard::isBlackJack)
+            .forEach(PlayerWithCard::winBlackJack);
+    }
+
+
+
+    /*
+    - 블랙잭 검증하기
+--plyaerㄴWithCard 돌면서 isBlackJack이 트루인 PlayerWithCard만 필터해서
+- PlyaerWithCard.player.winBlackJack(bettingmoney +1.5배 시켜줌)
+.count
+     */
 }

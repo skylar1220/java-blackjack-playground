@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 public class Cards {
 
     private final List<Card> cards;
+    private Status status;
 
     private Cards() {
         this.cards = new ArrayList<>();
@@ -32,4 +33,8 @@ public class Cards {
             .reduce(0, Integer::sum);
         return cardSum == 11;
     }
+
+//    public void setBlackJack() {
+//        this.status = Status.BLACKJACK;
+//    }
 }

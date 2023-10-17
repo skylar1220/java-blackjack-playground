@@ -3,10 +3,10 @@ package blackJack.domain;
 public class BettingMoney {
 
     private static final String RANGE_EXCEPTION_MESSAGE = "0원보다 큰 금액을 입력해주세요.";
-    private final int bettingMoeny;
+    private int bettingMoeny;
 
     private BettingMoney(int bettingMoney) {
-        validateRange(bettingMoney);
+//        validateRange(bettingMoney);
         this.bettingMoeny = bettingMoney;
     }
 
@@ -22,5 +22,15 @@ public class BettingMoney {
 
     public static BettingMoney from(int bettingMoney) {
         return new BettingMoney(bettingMoney);
+    }
+
+    //    - PlyaerWithCard.player.winBlackJack(bettingmoney +1.5배 시켜줌)
+
+    public void winBlackJack() {
+        bettingMoeny = (int) (bettingMoeny * 1.5);
+    }
+
+    public int getBettingMoeny() {
+        return bettingMoeny;
     }
 }

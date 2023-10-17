@@ -31,4 +31,43 @@ public class OutputView {
 
         );
     }
+
+    public static void printDealerOnlyBlackJack(PlayersWithCard playersWithCard) {
+        int playersBettingMoney = playersWithCard.getPlayersWithCard().stream()
+            .map(playerWithCard -> playerWithCard.getPlayer().getBettingMoney().getBettingMoeny())
+            .reduce(0, Integer::sum);
+    }
+
+    public static void printPlayerBlackJack(PlayersWithCard players) {
+    }
+
+    public static void printAllBlackJack(PlayersWithCard players) {
+    }
+
+    public static void printFinalBenefit(PlayersWithCard playersWithCard,
+        PlayerWithCard dealerWithCard) {
+        int playerBlackJackCount = playersWithCard.getPlayerBlackJackCount();
+
+        if (playerBlackJackCount > 0 && !dealerWithCard.isBlackJack()) {
+            printPlayerBlackJack(playersWithCard);
+        }
+        if (playerBlackJackCount == 0 && dealerWithCard.isBlackJack()) {
+            printDealerOnlyBlackJack(playersWithCard);
+        }
+        if (playerBlackJackCount > 0 && dealerWithCard.isBlackJack()) {
+            printAllBlackJack(playersWithCard);
+        }
+    }
 }
+
+/*
+- 블랙잭 검증하기
+--plyaerㄴWithCard 돌면서 isBlackJack이 트루인 PlayerWithCard만 필터해서
+- PlyaerWithCard.player.winBlackJack(bettingmoney +1.5배 시켜줌)
+.count
+--앞에서 나온 카운드가 0이면서 dealerWithCard에서 isBlackJack이 트루면
+players 돌면서 betting 금액 더해서 int dealerBettingMoney에 넣어줌
+-- 앞에서 나온 카운트가 0이 아닌데, 딜러가 블랙잭이면
+모든 플레이어의 수익을 0으로 출력하게 print에 얘기하면 됨
+player
+ */

@@ -14,7 +14,6 @@ import blackJack.dto.PlayerInfoDto;
 import blackJack.dto.PlayerNamesDto;
 import blackJack.domain.Players;
 import blackJack.domain.PlayersWithCard;
-import blackJack.domain.RandomCardGenerator;
 import java.util.List;
 
 public class GameController {
@@ -34,13 +33,21 @@ public class GameController {
         PlayersWithCard playersWithCard = players.firstCardSetting(cardGenerator);
         PlayerWithCard dealerWithCard = dealer.playerCardFirstSetting(cardGenerator);
         OutputView.printFirstSetting(playersWithCard, dealerWithCard);
-        playersWithCard.checkBalckJack();
-/*
-- 블랙잭 검증하기
 
--
- */
 
+        // checkBlackJack - print_BlackJack 부분 중복 제거해야할듯
+        int playerBlackJackCount = playersWithCard.getPlayerBlackJackCount();
+        if (isBlackJack(playerBlackJackCount, dealerWithCard)) {
+            OutputView.printFinalBenefit(playersWithCard, dealerWithCard);
+        }
+
+
+
+
+    }
+
+    private static boolean isBlackJack(int playerBlackJackCount, PlayerWithCard dealerWithCard) {
+        return playerBlackJackCount > 0 || dealerWithCard.isBlackJack();
     }
 
 

@@ -37,4 +37,13 @@ public class Player {
         playerWithCard.add(card2);
         return playerWithCard;
     }
+
+
+    public void winBlackJack() {
+        bettingMoney.winBlackJack();
+    }
+
+    public BettingMoney getBettingMoney() {
+        return bettingMoney;
+    }
 }

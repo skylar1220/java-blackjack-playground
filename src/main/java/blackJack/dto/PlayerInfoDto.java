@@ -1,4 +1,7 @@
-package blackJack;
+package blackJack.dto;
+
+import blackJack.domain.BettingMoney;
+import blackJack.domain.Player;
 
 public class PlayerInfoDto {
 

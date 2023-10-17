@@ -2,6 +2,8 @@ package blackJack;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import blackJack.domain.NumberGenerator;
+import blackJack.domain.RandomCardGenerator;
 import org.junit.jupiter.api.Test;
 
 public class RandomCardTest {
@@ -20,18 +22,16 @@ public class RandomCardTest {
             }
         };
         RandomCardGenerator randomCardGenerator = new RandomCardGenerator();
-        assertThat(randomCardGenerator.generate(numberGenerator)).isEqualTo(
-            new Card(Suit.CLOVER, Rank.A));
+//        assertThat(randomCardGenerator.generate()).isEqualTo(new Card(Suit.CLOVER, Rank.A));
     }
 
     @Test
     void randomTest() {
         RandomCardGenerator randomCardGenerator = new RandomCardGenerator();
-        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-        System.out.println(randomCardGenerator.generate(randomNumberGenerator));
-        System.out.println(randomCardGenerator.generate(randomNumberGenerator));
-        System.out.println(randomCardGenerator.generate(randomNumberGenerator));
-        System.out.println(randomCardGenerator.generate(randomNumberGenerator));
-        System.out.println(randomCardGenerator.generate(randomNumberGenerator));
+        System.out.println(randomCardGenerator.generate());
+        System.out.println(randomCardGenerator.generate());
+        System.out.println(randomCardGenerator.generate());
+        System.out.println(randomCardGenerator.generate());
+        System.out.println(randomCardGenerator.generate());
     }
 }

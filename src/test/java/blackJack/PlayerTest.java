@@ -3,6 +3,7 @@ package blackJack;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import blackJack.util.InputValidator;
 import org.junit.jupiter.api.Test;
 
 public class PlayerTest {

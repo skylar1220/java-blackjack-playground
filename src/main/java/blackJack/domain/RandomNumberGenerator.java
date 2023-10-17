@@ -1,4 +1,4 @@
-package blackJack;
+package blackJack.domain;
 
 import java.util.Random;
 

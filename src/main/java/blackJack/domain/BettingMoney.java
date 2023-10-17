@@ -1,4 +1,4 @@
-package blackJack;
+package blackJack.domain;
 
 public class BettingMoney {
 

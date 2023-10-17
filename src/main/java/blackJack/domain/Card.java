@@ -1,4 +1,4 @@
-package blackJack;
+package blackJack.domain;
 
 import java.util.Objects;
 
@@ -29,8 +29,7 @@ public class Card {
         return Objects.hash(suit, rank);
     }
 
-    @Override
-    public String toString() {
-        return  suit + "-" + rank;
+    public String getCard() {
+        return rank.getNumber() + suit.getForm() ;
     }
 }

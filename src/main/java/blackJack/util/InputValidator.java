@@ -1,4 +1,4 @@
-package blackJack;
+package blackJack.util;
 
 public class InputValidator {
 

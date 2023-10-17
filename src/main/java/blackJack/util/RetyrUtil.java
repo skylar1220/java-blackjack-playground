@@ -1,5 +1,6 @@
-package blackJack;
+package blackJack.util;
 
+import blackJack.view.OutputView;
 import java.util.function.Function;
 import java.util.function.Supplier;
 

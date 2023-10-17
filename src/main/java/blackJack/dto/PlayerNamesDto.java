@@ -1,4 +1,4 @@
-package blackJack;
+package blackJack.dto;
 
 import java.util.List;
 

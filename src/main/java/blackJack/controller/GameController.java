@@ -69,8 +69,9 @@ public class GameController {
         }
 
         playersWithCard.calculateEarning(dealerWithCard);
-
-        OutputView.printResult(playersWithCard, dealerWithCard);
+        // @ 너무 긺
+        PlayersWithCard allParicipant =  PlayersWithCard.from(playersWithCard.getAllParticipantWithCard(dealerWithCard));
+        OutputView.printResult(allParicipant);
         OutputView.printBenefit(playersWithCard, dealerWithCard);
 
 

@@ -127,6 +127,9 @@ public class PlayersWithCard {
         return winPlayerCont > 0;
     }
 
+    // @ 근데 결과를 위해 수익을 더해주는 건 ouput의 역할이 아니겠지?
+    // 왜냐면 dealer는 수익을 ouput에서 계산해서...
+    // 여기서도 사실 max cardsum을 구하는 과정에서 get이 한 번 들어가는 게 걸림
     private void checkWinner(List<PlayerWithCard> allParticipant) {
         // 스트림에서 all 돌면서 제일 큰 애한테 status win 주는 거지
         allParticipant.stream()
@@ -134,7 +137,7 @@ public class PlayersWithCard {
             .ifPresent(PlayerWithCard::setWin);
     }
 
-    private List<PlayerWithCard> getAllParticipantWithCard(PlayerWithCard dealerWithCard) {
+    public List<PlayerWithCard> getAllParticipantWithCard(PlayerWithCard dealerWithCard) {
         List<PlayerWithCard> participantList = new ArrayList<>();
         participantList.add(0, dealerWithCard);
         return participantList;
@@ -151,9 +154,9 @@ public class PlayersWithCard {
         });
     }
 
-//    public static PlayersWithCard from(List<PlayerWithCard> playersWithCard){
-//        return new PlayersWithCard(playersWithCard);
-//    }
+    public static PlayersWithCard from(List<PlayerWithCard> playersWithCard){
+        return new PlayersWithCard(playersWithCard);
+    }
 
 //    private void dealerWin(PlayerWithCard dealerWithCard) {
 ////        int bettingMoneySum = playersWithCard. // get 써야하는데 ouput에서 할까

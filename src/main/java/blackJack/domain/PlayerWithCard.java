@@ -34,6 +34,10 @@ public class PlayerWithCard {
         player.winBlackJack();
     }
 
+
+    public void notBlackJack() {
+        player.notBlackJack();
+    }
     public void extraCard(CardGenerator cardGenerator) {
         Card card = cardGenerator.generate();
         cards.add(card);
@@ -46,4 +50,9 @@ public class PlayerWithCard {
     public boolean needExtraCard() {
         return cards.needExtraCard();
     }
+
+    public void lossGame() {
+        player.lossBettingMoney();
+    }
+
 }

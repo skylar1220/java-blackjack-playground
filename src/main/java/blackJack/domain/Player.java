@@ -43,7 +43,15 @@ public class Player {
         bettingMoney.winBlackJack();
     }
 
+    public void notBlackJack() {
+        bettingMoney.notBlackJack();
+    }
+
     public BettingMoney getBettingMoney() {
         return bettingMoney;
+    }
+
+    public void lossBettingMoney() {
+        bettingMoney.lossMoney();
     }
 }

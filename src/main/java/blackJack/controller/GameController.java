@@ -41,6 +41,7 @@ public class GameController {
         if (isBlackJack(playerBlackJackCount, dealerWithCard)) {
             OutputView.printFinalBenefit(playersWithCard, dealerWithCard);
         }
+        // 블랙잭이면 이 뒤부분 안 가게 해야하는데, 일단 출력때 계산하기 위해서 1.5배는 안함
 
         // 여기 정리 필요
         for (PlayerWithCard playerWithCard : playersWithCard.getPlayersWithCard()) {

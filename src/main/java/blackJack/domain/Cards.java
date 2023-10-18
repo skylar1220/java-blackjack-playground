@@ -28,11 +28,19 @@ public class Cards {
     }
 
     public boolean isBlackJack() {
-        int cardSum = getCardsSum();
-        return cardSum == 11;
+        boolean containsA = false;
+        boolean containsJQK = false;
+        for (Card card:cards) {
+            containsA = card.isA();
+        }
+        for (Card card:cards) {
+            containsJQK = card.isJQK();
+        }
+        return containsA && containsJQK;
     }
 
-    public boolean isGameOver() {
+
+    public boolean isOverOr21() {
         int cardSum = getCardsSum();
         return cardSum >= 21;
     }
@@ -52,12 +60,16 @@ public class Cards {
         return getCardsSum() > comparison;
     }
 
-    public void setWin() {
+    public void gameWin() {
         status = Status.WIN;
     }
 
     public boolean isWin() {
         return status == Status.WIN;
+    }
+
+    public void gameOver() {
+        status = Status.LOSS;
     }
 
     // a인 경우, 근데 나머지가 ? 이상일 때는 1로, 이하일 때는 11ㅇ로 계산하는 부분 sum 메소드들에 넣어야 할듯

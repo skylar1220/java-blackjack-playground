@@ -28,7 +28,6 @@ public class GameController {
     }
 
     public void start() {
-        InputView.scanPlayerNames();
         Players players = read(this::generatePlayers);
         Player dealer = Player.from("딜러 ", BettingMoney.from(1));
 
@@ -41,7 +40,6 @@ public class GameController {
         if (isBlackJack(playerBlackJackCount, dealerWithCard)) {
             OutputView.printFinalBenefit(playersWithCard, dealerWithCard);
         }
-        // 블랙잭이면 이 뒤부분 안 가게 해야하는데, 일단 출력때 계산하기 위해서 1.5배는 안함
 
         // 여기 정리 필요
         for (PlayerWithCard playerWithCard : playersWithCard.getPlayersWithCard()) {
@@ -50,27 +48,38 @@ public class GameController {
                 extraCard = InputView.scanExtraCard(playerWithCard);
                 if (extraCard == ExtraCard.YES) {
                     playerWithCard.extraCard(cardGenerator);
+                    if (playerWithCard.isGameOver()) {
+                        OutputView.printPlayerCards(playerWithCard);
+                        playerWithCard.gameOver();
+                        break; // 루프를 빠져나옴
+                    }
+                    OutputView.printPlayerCards(playerWithCard);
                 }
                 if (extraCard == ExtraCard.NO) {
-                    OutputView.printPlayerCards(playerWithCard);
                 }
-                if (playerWithCard.isGameOver()) {
-                    OutputView.printPlayerCards(playerWithCard);
-                    break; // 루프를 빠져나옴
-                }
+//                if (playerWithCard.isGameOver()) {
+////                    OutputView.printPlayerCards(playerWithCard);
+//                    break; // 루프를 빠져나옴
+//                }
             } while (extraCard == ExtraCard.YES);
+            if (playersWithCard.isGameOver()){
+                break;
+            }
+            OutputView.printPlayerCards(playerWithCard);
         }
 
         // 딜러 차례
         // 16이하일 때와 gameOver일 때까지 extra 카드 받기 / 플레이어 중 gameOver가 아니면
-        while (dealerWithCard.needExtraCard() || !dealerWithCard.isGameOver() || !playersWithCard.isGameOver()) {
+        while (dealerWithCard.needExtraCard() && !dealerWithCard.isGameOver()
+            && !playersWithCard.isGameOver()) {
             dealerWithCard.extraCard(cardGenerator);
             OutputView.printDealerExtraCard();
         }
 
         playersWithCard.calculateEarning(dealerWithCard);
         // @ 너무 긺
-        PlayersWithCard allParicipant =  PlayersWithCard.from(playersWithCard.getAllParticipantWithCard(dealerWithCard));
+        PlayersWithCard allParicipant = PlayersWithCard.from(
+            playersWithCard.getAllParticipantWithCard(dealerWithCard));
         OutputView.printResult(allParicipant);
         OutputView.printBenefit(playersWithCard, dealerWithCard);
 

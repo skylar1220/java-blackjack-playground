@@ -44,7 +44,7 @@ public class PlayerWithCard {
     }
 
     public boolean isGameOver() {
-        return cards.isGameOver();
+        return (cards.isOverOr21()) || (cards.isBlackJack());
     }
 
     public boolean needExtraCard() {
@@ -59,11 +59,15 @@ public class PlayerWithCard {
         return cards.isSumBiggerThan(comparison);
     }
 
-    public void setWin() {
-        cards.setWin();
+    public void gameWin() {
+        cards.gameWin();
     }
 
     public boolean isWin() {
         return cards.isWin();
+    }
+
+    public void gameOver() {
+        cards.gameOver();
     }
 }

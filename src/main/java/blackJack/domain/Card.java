@@ -40,4 +40,12 @@ public class Card {
     public Rank getRank() {
         return rank;
     }
+
+    public boolean isA() {
+        return rank == Rank.A;
+    }
+
+    public boolean isJQK() {
+       return  (rank == Rank.Q) || (rank == Rank.J) || (rank == Rank.K);
+    }
 }

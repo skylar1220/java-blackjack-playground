@@ -22,8 +22,8 @@ public class OutputView {
         System.out.printf("딜러와 %s에게 2장의 나누었습니다.", playersName);
         System.out.println();
 
-        playersWithCard.addDealer(dealerWithCard);
-        playersWithCard.getPlayersWithCard().forEach(playerWithCard -> {
+        List<PlayerWithCard> allParticipant = playersWithCard.getAllParticipantWithCard(dealerWithCard);
+        allParticipant.forEach(playerWithCard -> {
                 String playerName = playerWithCard.getPlayer().getPlayerName().getName();
                 String playerCards = String.join(", ", playerWithCard.getCards().getCardsName());
                 System.out.printf("%s카드: %s", playerName, playerCards);

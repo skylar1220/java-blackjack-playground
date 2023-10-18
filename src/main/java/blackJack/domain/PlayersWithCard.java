@@ -48,6 +48,12 @@ public class PlayersWithCard {
             .count();
         return gameOverCount > 0;
     }
+//    public boolean isGameOver() {
+//        int gameOverCount = (int) playersWithCard.stream()
+//            .filter(PlayerWithCard::isGameOver)
+//            .count();
+//        return gameOverCount > 0;
+//    }
 
     public void calculateEarning(PlayerWithCard dealerWithCard) {
         calculateBlackJack(dealerWithCard);
@@ -74,7 +80,9 @@ public class PlayersWithCard {
     // 여기 중복 부분 메소드 분리 필요@
     private void calculateFinalWin(PlayerWithCard dealerWithCard) {
         List<PlayerWithCard> allParticipant = getAllParticipantWithCard(dealerWithCard);
+
         checkWinner(allParticipant);
+
         if (!isDraw(dealerWithCard)) {
             playersWithCard.forEach(playerWithCard -> {
                 if (!playerWithCard.isWin()) {
@@ -134,11 +142,11 @@ public class PlayersWithCard {
         // 스트림에서 all 돌면서 제일 큰 애한테 status win 주는 거지
         allParticipant.stream()
             .max(Comparator.comparing(playerWithCard -> playerWithCard.getCards().getCardsSum()))
-            .ifPresent(PlayerWithCard::setWin);
+            .ifPresent(PlayerWithCard::gameWin);
     }
 
     public List<PlayerWithCard> getAllParticipantWithCard(PlayerWithCard dealerWithCard) {
-        List<PlayerWithCard> participantList = new ArrayList<>();
+        List<PlayerWithCard> participantList = new ArrayList<>(playersWithCard);
         participantList.add(0, dealerWithCard);
         return participantList;
     }

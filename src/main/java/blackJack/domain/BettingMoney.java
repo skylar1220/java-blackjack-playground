@@ -30,7 +30,7 @@ public class BettingMoney {
         bettingMoeny = (int) (bettingMoeny * 1.5);
     }
 
-    public void notBlackJack() {
+    public void draw() {
         bettingMoeny = 0;
     }
 

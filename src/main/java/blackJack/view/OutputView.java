@@ -69,7 +69,7 @@ public class OutputView {
         System.out.println("딜러는 16이하라 한장의 카드를 더 받았습니다.");
     }
 
-    public static void printResult(PlayersWithCard playersWithCard) {
+    public static void printResult(PlayersWithCard playersWithCard, PlayerWithCard dealerWithCard) {
 
         playersWithCard.getPlayersWithCard().forEach(playerWithCard -> {
                 String playerName = playerWithCard.getPlayer().getPlayerName().getName();
@@ -81,7 +81,7 @@ public class OutputView {
         );
     }
 
-    public static void printBenefit(PlayersWithCard playersWithCard) {
+    public static void printBenefit(PlayersWithCard playersWithCard, PlayerWithCard dealerWithCard) {
         System.out.println("## 최종 수익");
         playersWithCard.getPlayersWithCard().forEach(playerWithCard -> {
                 String playerName = playerWithCard.getPlayer().getPlayerName().getName();

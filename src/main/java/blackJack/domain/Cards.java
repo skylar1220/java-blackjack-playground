@@ -48,6 +48,18 @@ public class Cards {
         return cardSum <= 16;
     }
 
+    public boolean isSumBiggerThan(int comparison) {
+        return getCardsSum() > comparison;
+    }
+
+    public void setWin() {
+        status = Status.WIN;
+    }
+
+    public boolean isWin() {
+        return status == Status.WIN;
+    }
+
     // a인 경우, 근데 나머지가 ? 이상일 때는 1로, 이하일 때는 11ㅇ로 계산하는 부분 sum 메소드들에 넣어야 할듯
 
 }

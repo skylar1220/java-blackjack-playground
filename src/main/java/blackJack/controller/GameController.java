@@ -70,8 +70,8 @@ public class GameController {
 
         playersWithCard.calculateEarning(dealerWithCard);
 
-        OutputView.printResult(playersWithCard);
-        OutputView.printBenefit(playersWithCard);
+        OutputView.printResult(playersWithCard, dealerWithCard);
+        OutputView.printBenefit(playersWithCard, dealerWithCard);
 
 
     }

@@ -35,8 +35,8 @@ public class PlayerWithCard {
     }
 
 
-    public void notBlackJack() {
-        player.notBlackJack();
+    public void draw() {
+        player.draw();
     }
     public void extraCard(CardGenerator cardGenerator) {
         Card card = cardGenerator.generate();
@@ -51,8 +51,19 @@ public class PlayerWithCard {
         return cards.needExtraCard();
     }
 
-    public void lossGame() {
+    public void lossMoney() {
         player.lossBettingMoney();
     }
 
+    public boolean isCardSumBiggerThan(int comparison) {
+        return cards.isSumBiggerThan(comparison);
+    }
+
+    public void setWin() {
+        cards.setWin();
+    }
+
+    public boolean isWin() {
+        return cards.isWin();
+    }
 }
